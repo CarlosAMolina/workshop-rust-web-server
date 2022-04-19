@@ -1,0 +1,150 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Beamer Presentation
+% LaTeX Template
+% Version 1.0 (10/11/12)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass{beamer}
+
+\mode<presentation> {
+
+\usetheme{Madrid}
+
+\setbeamertemplate{navigation symbols}{} % Remove the navigation symbols from the bottom of all slides
+}
+
+\usepackage{graphicx} % Allows including images
+\definecolor{links}{HTML}{2A1B81}
+\hypersetup{colorlinks,linkcolor=,urlcolor=links}
+
+\graphicspath{ {./images/} }
+
+%----------------------------------------------------------------------------------------
+% TITLE PAGE
+%----------------------------------------------------------------------------------------
+
+\title[Rust]{Rust} % The short title appears at the bottom of every slide, the full title is only on the title page
+\author{Carlos A Molina}
+\date{May 4, 2022}
+
+\begin{document}
+
+\begin{frame}
+\titlepage % Print the title page as the first slide
+\end{frame}
+
+\begin{frame}
+\frametitle{Table of contents}
+\tableofcontents % Throughout your presentation, if you choose to use \section{} and \subsection{} commands, these will automatically be printed on this slide as an overview of your presentation
+\end{frame}
+
+%----------------------------------------------------------------------------------------
+% PRESENTATION SLIDES
+%----------------------------------------------------------------------------------------
+
+%------------------------------------------------
+\section{Introduction} % Sections can be created in order to organize your presentation into discrete blocks, all sections and subsections are automatically printed in the table of contents as an overview of the talk
+%------------------------------------------------
+
+\begin{frame}
+
+\frametitle{Logo and mascot}
+
+\begin{columns}[c] % The "c" option specifies centered vertical alignment while the "t" option is used for top vertical alignment
+
+\column{.45\textwidth}
+
+  \begin{figure}
+    \centering
+    \href{https://foundation.rust-lang.org/img/rust-logo-blk.svg}
+      {\includegraphics[width=0.5\textwidth]{rust-logo-blk.png}}
+    \caption{Rust logo}
+  \end{figure}
+
+\column{.5\textwidth}
+  \begin{figure}
+    \centering
+    \href{https://rustacean.net/assets/rustacean-orig-noshadow.svg}
+      {\includegraphics[width=0.5\textwidth]{rustacean-orig-noshadow.png}}
+    \caption{Ferris the crab. Unofficial mascot}
+  \end{figure}
+
+\end{columns}
+
+\end{frame}
+
+\begin{frame}
+
+\frametitle{History}
+
+\begin{itemize}
+\item 2006. Graydon Hoare started the language as a personal project. 
+\item 2009. Mozilla began sponsoring the project.
+\item 2012. First numbered pre-alpha release.
+\item 2015. First stable release, Rust 1.0.
+\item 2020. Mozilla COVID-19 layoffs raised concerns about its future.
+\item 2021. Rust Foundation by AWS, Huawei, Google, Microsoft and Mozilla.
+\end{itemize}
+
+\end{frame}
+
+\section{Features}
+
+\begin{frame}
+\frametitle{Features}
+
+- Compiled
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Adoption}
+\begin{itemize}
+\item 2021. Google da soporte a Rust en `Android Open Source Project` como alternativa a C/C++.
+\end{itemize}
+
+\end{frame}
+
+\section{Demo}
+
+\begin{frame}
+\frametitle{Demo}
+
+\begin{figure}
+  \centering
+  \frame{
+  \includegraphics[scale=0.7]{trpl20-01.png}
+  }
+  \caption{Multithreaded Web Server}
+\end{figure}
+
+\end{frame}
+
+\section{References}
+
+\begin{frame}
+\frametitle{References}
+\begin{itemize}
+\item Rust logo\\
+\href{https://foundation.rust-lang.org/policies/logo-policy-and-media-guide/\#the-rust-trademarks}{https://foundation.rust-lang.org}
+\item Ferris the crab, unofficial mascot\\
+\href{https://rustacean.net}{https://rustacean.net}
+\item History and adoption\\
+\href{https://en.wikipedia.org/wiki/Rust_(programming_language)}{https://en.wikipedia.org}
+\item Multithreaded Web Server\\
+\href{https://doc.rust-lang.org/stable/book/ch20-00-final-project-a-web-server.html}{https://doc.rust-lang.org}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\Huge{\centerline{Thank you!}}
+\end{frame}
+
+\end{document} 
