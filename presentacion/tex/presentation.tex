@@ -117,13 +117,25 @@
 \begin{frame}
 \frametitle{Demo}
 
-\begin{figure}
-  \centering
-  \frame{
-  \includegraphics[scale=0.7]{trpl20-01.png}
-  }
-  \caption{Multithreaded Web Server}
-\end{figure}
+\begin{columns}[c] % The "c" option specifies centered vertical alignment while the "t" option is used for top vertical alignment
+
+\column{.5\textwidth}
+  \begin{figure}
+    \centering
+    \frame{
+      \href{https://doc.rust-lang.org/stable/book/ch20-00-final-project-a-web-server.html}
+	  {\includegraphics[width=0.7\textwidth]{trpl20-01.png}}
+    }
+  \caption{Web Server}
+  \end{figure}
+
+\column{.45\textwidth}
+\begin{itemize}
+\item Single-Threated
+\item Multithreated
+\end{itemize}
+
+\end{columns}
 
 \end{frame}
 
