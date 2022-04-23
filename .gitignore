@@ -1,2 +1,8 @@
+# Presentation
 /presentacion/tex/presentation.pdf
+
+# Rust
+/code/ownership/target
+
+# Vim
 *.swp
