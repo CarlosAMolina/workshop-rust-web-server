@@ -22,10 +22,29 @@
 
 \usepackage{chronology}
 \usepackage{graphicx} % Allows including images
+\usepackage{listings} % Allows including code
+\usepackage{color}
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
 \definecolor{links}{HTML}{2A1B81}
 \hypersetup{colorlinks,linkcolor=,urlcolor=links}
 
 \graphicspath{ {./images/} }
+
+% Insert code
+% https://stackoverflow.com/questions/3175105/inserting-code-in-this-latex-document-with-indentation
+\lstset{frame=tb,
+  language=Java,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\small\ttfamily},
+  keywordstyle=\color{blue},
+  commentstyle=\color{dkgreen},
+  stringstyle=\color{mauve},
+  breaklines=true
+}
 
 %----------------------------------------------------------------------------------------
 % TITLE PAGE
@@ -132,6 +151,31 @@
 
 \end{frame}
 
+\begin{frame}[fragile]
+\frametitle{Features. Ownership}
+
+\begin{lstlisting}
+fn main() {
+    let tribe_name = String::from("Backend");
+    println!("Hi {} Tribe!", tribe_name);
+    greet_borrowing(&tribe_name);
+    println!("Hi {} Tribe!", tribe_name);
+    greet_ownership(tribe_name);
+    //println!("Hello {} Tribe!", tribe_name); // ERROR
+}
+
+fn greet_borrowing(name: &String) {
+    println!("Hi {} Tribe!", name);
+}
+
+fn greet_ownership(name: String) {
+    println!("Hi {} Tribe!", name);
+}
+\end{lstlisting}
+
+\end{frame}
+
+
 \begin{frame}
 \frametitle{Features}
 \underline{Memory safety}
@@ -139,7 +183,6 @@
 No garbage collector
 
 \end{frame}
-
 
 \begin{frame}
 \frametitle{Adoption}
@@ -213,7 +256,6 @@ No garbage collector
 \href{https://doc.rust-lang.org/stable/book/ch20-00-final-project-a-web-server.html}{https://doc.rust-lang.org}
 \end{itemize}
 \end{frame}
-
 
 \begin{frame}
 \Huge{\centerline{Thank you!}}
