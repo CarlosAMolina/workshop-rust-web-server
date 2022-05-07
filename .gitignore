@@ -2,6 +2,7 @@
 /presentacion/tex/presentation.pdf
 
 # Rust
+/code/lifetime/target
 /code/ownership/target
 
 # Vim

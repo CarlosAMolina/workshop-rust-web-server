@@ -145,7 +145,11 @@
 \item Low-level
 \item Compiled
 \item Performance: no garbage collector
-\item Memory and thread safety (concurrency without data races): type system, ownership model
+\item Type system and ownership model guarantee:
+  \begin{itemize}
+  \item Memory-safety
+  \item Thread-safety
+  \end{itemize}
 \item Cargo: cargo build, cargo fmt...
 \end{itemize}
 
@@ -156,20 +160,38 @@
 
 \begin{lstlisting}
 fn main() {
-    let tribe_name = String::from("Backend");
-    println!("Hi {} Tribe!", tribe_name);
-    greet_borrowing(&tribe_name);
-    println!("Hi {} Tribe!", tribe_name);
-    greet_ownership(tribe_name);
+    let mut tribe_name = String::from("Backend"); // Mutable
+    println!("Hi {}!", tribe_name); // Hi Backend!
+    tribe_name.push_str(" Tribe");
+    println!("Hi {}!", tribe_name); // Hi Backend Tribe!
+    greet_borrowing(&tribe_name); // Hi Backend Tribe!
+    println!("Hi {}!", tribe_name); // Hi Backend Tribe!
+    greet_ownership(tribe_name); // Hi Backend Tribe!
     //println!("Hello {} Tribe!", tribe_name); // ERROR
 }
 
 fn greet_borrowing(name: &String) {
-    println!("Hi {} Tribe!", name);
+    println!("Hi {}!", name);
 }
 
 fn greet_ownership(name: String) {
-    println!("Hi {} Tribe!", name);
+    println!("Hi {}!", name);
+}
+\end{lstlisting}
+
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Features. Rules and lifetime}
+
+\begin{lstlisting}
+fn main() {
+    let mut buffer = format!("Hello");
+    let slice = &buffer; // buffer borrowed here
+    //buffer.push_str(" World"); // ERROR. Cannot mutate while shared
+    //slice.push_str(" World"); // ERROR. Cannot mutate through a shared ref
+    println!("{:?}", slice); // reading slice ok while shared
+    buffer.push_str(" World"); // after last use of slice, buffer is mutable again
 }
 \end{lstlisting}
 

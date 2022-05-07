@@ -8,7 +8,7 @@ Los despidos por el Covid disolvieron el equipo de Servo, algunos miembros del e
 - Performance: similar a C.
 - Data race: varios hilos acceden al mismo tiempo a la misma dirección de memoria y alguno la modifica.
 
-### Memory safety
+### Memory-safety
 
 En tiempo de complicación, gracias al sistema de ownership, se evita:
 
@@ -21,4 +21,8 @@ Cómo se consigue esto:
 - Las variables tienen un dueño (owner).
 - Se puede dar ownership de las variables o prestarlas (borrow).
 - Cuando el owner está fuera de scope, las variables se liberan/destrullen automáticamente.
+- Uso de reglas con el lifetime de las variables.
 
+### Thread-safety
+
+- Concurrency without data races
