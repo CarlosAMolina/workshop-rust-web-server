@@ -25,4 +25,4 @@ Cómo se consigue esto:
 
 ### Thread-safety
 
-- Concurrency without data races
+- Concurrency without data races (escribir en una dirección de memoria compartida sin orden por distintas ejecuciones). Se consigue al no permitir compartir y modificar una variable al mismo tiempo.
