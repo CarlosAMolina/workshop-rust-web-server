@@ -10,28 +10,41 @@ use web_server::ThreadPool;
 fn main() {
     let url = "127.0.0.1:7878";
     let listener = TcpListener::bind(url).unwrap();
-    let threads_number = 4;
-    let pool = ThreadPool::new(threads_number);
-    let max_requests = 3;
+
+    let single_threat = false;
 
     println!("Init on http://{}", url);
 
-    for stream in listener.incoming().take(max_requests) {
-        let stream = stream.unwrap();
+    if single_threat {
+        for stream in listener.incoming() {
+            let stream = stream.unwrap();
 
-        pool.execute(|| {
-            handle_connection(stream);
-        });
+            handle_connection(stream, true);
+        }
+    } else {
+        let threads_number = 8;
+        let pool = ThreadPool::new(threads_number);
+        let max_requests = 6;
+
+        for stream in listener.incoming().take(max_requests) {
+            let stream = stream.unwrap();
+
+            pool.execute(|| {
+                handle_connection(stream, false);
+            });
+        }
+
+        println!("Shutting down.");
     }
-
-    println!("Shutting down.");
 }
 
-fn handle_connection(mut stream: TcpStream) {
+fn handle_connection(mut stream: TcpStream, log: bool) {
     let mut buffer = [0; 1024];
     stream.read(&mut buffer).unwrap();
 
-    //println!("Request: {}", String::from_utf8_lossy(&buffer[..]));
+    if log {
+        println!("Request: {}", String::from_utf8_lossy(&buffer[..]));
+    }
 
     let get = b"GET / HTTP/1.1\r\n";
     let sleep = b"GET /sleep HTTP/1.1\r\n";
@@ -48,7 +61,7 @@ fn handle_connection(mut stream: TcpStream) {
     let contents = fs::read_to_string(filename).unwrap();
 
     let response = format!(
-        "{}\r\nContent-Length: {}\r\n\r\n{}",
+        "{}\r\nContent-Length: {}\r\nGreet: Hi Backend Tribe!\r\n\r\n{}",
         status_line,
         contents.len(),
         contents
