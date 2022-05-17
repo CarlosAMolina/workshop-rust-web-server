@@ -4,6 +4,7 @@
 # Rust
 /code/lifetime/target
 /code/ownership/target
+/code/web_server/target
 
 # Vim
 *.swp
