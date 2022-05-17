@@ -11,7 +11,7 @@ fn main() {
     let url = "127.0.0.1:7878";
     let listener = TcpListener::bind(url).unwrap();
 
-    let single_threat = false;
+    let single_threat = true;
 
     println!("Init on http://{}", url);
 
