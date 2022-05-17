@@ -20,7 +20,7 @@ Cómo se consigue esto:
 
 - Las variables tienen un dueño (owner).
 - Se puede dar ownership de las variables o prestarlas (borrow).
-- Cuando el owner está fuera de scope, las variables se liberan/destrullen automáticamente.
+- Cuando el owner está fuera de scope, las variables se liberan/destruyen automáticamente.
 - Uso de reglas con el lifetime de las variables.
 
 ### Thread-safety
